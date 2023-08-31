@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            width: 100vw;
+            background-color: #000021;
+        }
+
+        .clock {
+            height: 350px;
+            width: 800px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 10px aqua, 0 0 20px inset aqua, 0 0 40px inset aqua, 0 0 80px aqua, 0 0 160px inset aqua, 0 0 80px inset aqua, 0 0 160px aqua;
+            flex-direction: column;
+            border-radius: 10px;
+        }
+
+        .mydate,
+        .mytime {
+            color: white;
+            text-shadow: 0 0 10px aqua;
+            font-family: cursive;
+        }
+
+        .mydate {
+            font-size: 1.5rem;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .mytime {
+            font-size: 5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="clock">
+        <h3 class="mydate"></h3>
+        <h1 class="mytime"></h1>
+    </div>
+</body>
+<script>
+    setInterval(() => {
+        const months = [
+            "January", "February", "March", "April",
+            "May", "June", "July", "August",
+            "September", "October", "November", "December"
+        ];
+        const daysOfWeek = [
+            "Sunday", "Monday", "Tuesday", "Wednesday",
+            "Thursday", "Friday", "Saturday"
+        ];
+        let mydate = document.querySelector('.mydate'); //mydate variable
+        let mytime = document.querySelector('.mytime'); //mytime variable
+
+        // applying the date functionality
+        let date = new Date();
+        let year = date.getFullYear();
+        let month = date.getMonth();
+        let today = date.getDate();
+        let day = date.getDay();
+
+        mydate.innerHTML = `${year} ${months[month + 1]} ${today}, ${daysOfWeek[day]}`;
+
+        // applying the time functionality 
+
+        let hours = date.getHours();
+        let mins = date.getMinutes();
+        let secs = date.getSeconds();
+        mytime.innerHTML = `${hours} : ${mins} : ${secs}`;
+    }, 1000);
+
+</script>
+
+</html>

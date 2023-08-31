@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            width: 100vw;
+            background-color: #000013;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            height: 400px;
+            width: 800px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 10px aqua, 0 0 20px aquamarine, 0 0 40px inset aqua, 0 0 80px aqua, 0 0 160px inset aqua;
+            color: white;
+            flex-direction: column;
+            border-radius: 10px;
+        }
+
+        .mydate {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 2rem;
+            margin: 15px 0px;
+            text-shadow: 0 0 10px black, 0 0 20px white;
+        }
+
+        .mytime {
+            font-size: 6.5rem;
+            font-family: cursive;
+            text-shadow: 0 0 10px aqua, 0 0 5px black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h3 class="mydate">2023 August 29, Tuesday</h3>
+        <h1 class="mytime">12:42:36</h1>
+    </div>
+</body>
+<script>
+
+    setInterval(() => {
+        const months = [
+            "January", "February", "March", "April",
+            "May", "June", "July", "August",
+            "September", "October", "November", "December"
+        ];
+        const daysOfWeek = [
+            "Sunday", "Monday", "Tuesday", "Wednesday",
+            "Thursday", "Friday", "Saturday"
+        ];
+        // mydate
+        let mydate = new Date();
+        let year = mydate.getFullYear();
+        let month = mydate.getMonth();
+        let date = mydate.getDate();
+        let day = mydate.getDay();
+        console.log(months[month]);
+        console.log(daysOfWeek[day]);
+        let md = document.querySelector('.mydate');
+        md.innerHTML = `${year} ${months[month]} ${date}, ${daysOfWeek[day]}`
+
+        // mytime
+        let mytime = document.querySelector('.mytime');
+        let hour = mydate.getHours();
+        let mins = mydate.getMinutes();
+        let sec = mydate.getSeconds();
+        mytime.innerHTML = `${hour} : ${mins} : ${sec}s`
+
+
+
+
+
+    }, 1000);
+
+
+
+</script>
+
+</html>
